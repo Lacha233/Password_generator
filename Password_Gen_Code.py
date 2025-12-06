@@ -1,24 +1,44 @@
-import random 
-import string
+import random
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't' 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-length = int(input("Enter password length: "))
-include_upper = input("Include uppercase letters? (y/n): ").lower() == 'y'
-include_lower = input("Include lowercase letters? (y/n): ").lower() == 'y'
-include_digits = input("Include numbers? (y/n): ").lower() == 'y'
-include_symbols = input("Include special characters? (y/n): ").lower() == 'y'
+print("Welcome to the Password Generator!")
+nr_letters = int(input("How many letters would you like in your password?\n"))
+nr_symbols = int(input(f"How many symbols would you like?\n"))
+nr_numbers = int(input(f"How many numbers would you like? \n"))
 
-characters = ""
-if include_upper:
-    characters += string.ascii_uppercase
-if include_lower:
-    characters += string.ascii_lowercase
-if include_digits:
-    characters += string.digits
-if include_symbols:
-    characters += string.punctuation
+#Easy Level
+#password = ""
 
-if characters:
-    password = ''.join(random.choice(characters) for _ in range(length))
-    print("Generated Password:", password)
-else:
-    print("No character set selected!")
+#for char in range (0, nr_letters):
+#    password += random. choice (letters)
+
+#for char in range(0, nr_symbols):
+#    password += random. choice (symbols)
+
+#for char in range(0, nr_numbers):
+#    password += random. choice (numbers)
+
+#print(password)
+
+#Hard level
+password_list = []
+for char in range(0, nr_letters):
+      password_list.append(random.choice(letters))
+
+for char in range(0, nr_symbols):
+      password_list.append(random.choice(symbols))
+
+for char in range(0, nr_numbers):
+      password_list.append(random.choice(numbers))
+
+print(password_list)
+random.shuffle(password_list)
+print(password_list)
+
+password = ""
+for char in password_list:
+      password += char
+
+print(f"Your password is: {password}")
